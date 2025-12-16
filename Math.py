@@ -5,6 +5,9 @@ def colourVis(self):
     g = green.get()
     b = blue.get()
     hex_colour = f'#{r:02x}{g:02x}{b:02x}'
+    red.config(background= f'#{r:02x}0000')
+    green.config(background= f'#00{g:02x}00')
+    blue.config(background= f'#0000{b:02x}')
     preview.config(bg=hex_colour)
 
 #Defines Converting Tool
@@ -47,13 +50,13 @@ def value():
 root = tk.Tk()
 root.title("RGB to HSV Converter")
 #RGB sliders
-red = tk.Scale(root, from_=0, to=255, orient="horizontal", label="Red" , command=colourVis)
+red = tk.Scale(root, from_=0, to=255, orient="horizontal", label= 'Red', foreground= '#ffffff',  command=colourVis)
 red.set(0)
 red.pack(fill="x",padx= 10)
-green = tk.Scale(root, from_=0, to=255, orient="horizontal", label="Green", command=colourVis)
+green = tk.Scale(root, from_=0, to=255, orient="horizontal", label="Green", foreground= '#ffffff', command=colourVis)
 green.set(0)
 green.pack(fill="x",padx= 10)
-blue = tk.Scale(root, from_=0, to=255, orient="horizontal", label="Blue", command=colourVis)
+blue = tk.Scale(root, from_=0, to=255, orient="horizontal", label="Blue", foreground= '#ffffff', command=colourVis)
 blue.set(0)
 blue.pack(fill = "x", padx= 10)
 
@@ -70,6 +73,7 @@ tk.Label(root,textvariable= satVar).pack()
 tk.Label(root, text="Value (Percentage)").pack()
 tk.Label(root,textvariable= valVar).pack()
 
+tk.Label(root, text="Colour Preview", ).pack()
 preview = tk.Label(root, borderwidth=2,relief="solid")
 preview.pack(fill= "both", padx= 5, pady=5, expand=True)
 
